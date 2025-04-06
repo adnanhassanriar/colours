@@ -1,0 +1,37 @@
+# Sample Apache2 Virtual Host Configuration
+# File: /etc/apache2/sites-available/mywebsite.conf
+
+<VirtualHost *:80>
+    # The ServerName directive sets the domain name or hostname this virtual host responds to
+    ServerName mywebsite.local
+    # Optional: Additional aliases (e.g., www.mywebsite.local)
+    ServerAlias www.mywebsite.local
+
+    # The email address for the server admin (optional, for error messages)
+    ServerAdmin webmaster@mywebsite.local
+
+    # Directory where your website files are stored
+    DocumentRoot /var/www/html
+
+    # Directory block to set permissions and options for the document root
+    <Directory /var/www/html>
+        # Allow Apache to follow symbolic links (if any)
+        Options Indexes FollowSymLinks
+        # Allow .htaccess files to override settings (if needed)
+        AllowOverride All
+        # Require all clients to be granted access (adjust for security as needed)
+        Require all granted
+    </Directory>
+
+    # Log file locations (relative to /var/log/apache2/)
+    ErrorLog ${APACHE_LOG_DIR}/mywebsite-error.log
+    CustomLog ${APACHE_LOG_DIR}/mywebsite-access.log combined
+
+    # Optional: Set a custom directory index file
+    DirectoryIndex index.html index.php
+
+    # Optional: Enable basic rewrite rules (requires mod_rewrite)
+    # RewriteEngine On
+    # Example: Redirect all HTTP to HTTPS (uncomment if using SSL)
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+</VirtualHost>

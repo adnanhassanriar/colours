@@ -1,0 +1,42 @@
+---
+- name: Deploy custom HTML file
+  hosts: web_servers
+  become: yes  # This enables sudo privileges
+  
+  tasks:
+
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache2 is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Ensure web directory exists
+      file:
+        path: /var/www/html
+        state: directory
+        mode: '0755'
+
+    - name: Copy Apache configuration
+      copy:
+        src: files/apache.conf.j2
+        dest: /etc/apache2/sites-available/apache2.conf
+        mode: '0644'
+
+    - name: Copy index.html to web server
+      copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+  handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        state: restarted
+

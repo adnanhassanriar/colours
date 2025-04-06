@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Colors</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .color-section {
+            height: 100vh; /* Full viewport height for each section */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            scroll-snap-align: start; /* Smooth snapping when scrolling */
+            transition: background-color 0.5s ease;
+        }
+        h1 {
+            font-size: 4em;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            margin: 0;
+        }
+        p {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        /* Define each color section */
+        #red { background-color: #ff0000; }
+        #orange { background-color: #ff7f00; }
+        #yellow { background-color: #ffff00; color: #333; } /* Dark text for readability */
+        #green { background-color: #00ff00; color: #333; } /* Dark text for readability */
+        #blue { background-color: #0000ff; }
+        #indigo { background-color: #4b0082; }
+        #violet { background-color: #8f00ff; }
+        /* Scroll snapping for smooth navigation */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            z-index: 10;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#red">Red</a>
+        <a href="#orange">Orange</a>
+        <a href="#yellow">Yellow</a>
+        <a href="#green">Green</a>
+        <a href="#blue">Blue</a>
+        <a href="#indigo">Indigo</a>
+        <a href="#violet">Violet</a>
+    </nav>
+
+    <div class="color-section" id="red">
+        <h1>Red</h1>
+        <p>The color of passion and energy.</p>
+    </div>
+    <div class="color-section" id="orange">
+        <h1>Orange</h1>
+        <p>A burst of warmth and creativity.</p>
+    </div>
+    <div class="color-section" id="yellow">
+        <h1>Yellow</h1>
+        <p>Bright and cheerful like the sun.</p>
+    </div>
+    <div class="color-section" id="green">
+        <h1>Green</h1>
+        <p>The hue of nature and growth.</p>
+    </div>
+    <div class="color-section" id="blue">
+        <h1>Blue</h1>
+        <p>Calm and serene like the ocean.</p>
+    </div>
+    <div class="color-section" id="indigo">
+        <h1>Indigo</h1>
+        <p>Deep and mysterious.</p>
+    </div>
+    <div class="color-section" id="violet">
+        <h1>Violet</h1>
+        <p>Royal and imaginative.</p>
+    </div>
+</body>
+</html>
